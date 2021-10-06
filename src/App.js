@@ -32,16 +32,16 @@ function App() {
           <div className="ejer">
             <div className="status">
               <h1>JS-EJERCICIOS</h1>
+            </div>
 
-              <div className="cards">
-                <Switch>
-                  <Route path={'/inicio'} component={Inicio}></Route>
-                  <Route path={'/liniales'} component={Liniales}></Route>
-                  <Route path={'/alternativos'} component={Alternativos}></Route>
-                  <Route path={'/repeticion'} component={Repeticion}></Route>
-                  <Route path={'/otros'} component={Otros}></Route>
-                </Switch>
-              </div>
+            <div className="cards">
+              <Switch>
+                <Route path={'/inicio'} component={Inicio}></Route>
+                <Route path={'/liniales'} component={Liniales}></Route>
+                <Route path={'/alternativos'} component={Alternativos}></Route>
+                <Route path={'/repeticion'} component={Repeticion}></Route>
+                <Route path={'/otros'} component={Otros}></Route>
+              </Switch>
             </div>
           </div>
         </section>

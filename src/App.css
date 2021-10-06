@@ -124,13 +124,41 @@ main {
 
 /* ejercicios */
 .status {
-  margin: 2rem 0;
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
 }
 
 .ejer {
-  margin: 0 4rem;
+  width: inherit;
   display: flex;
   flex: 2;
   flex-direction: column;
   justify-content: space-evenly;
+}
+
+.cards {
+  overflow-y: scroll;
+  margin: 2rem;
+}
+
+/* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
+
+.cards::-webkit-scrollbar {
+  width: 8px;
+}
+
+.cards::-webkit-scrollbar-track {
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  backdrop-filter: blur(2rem);
+  border-radius: 100px;
+}
+
+.cards::-webkit-scrollbar-thumb {
+  background-color: #f1fcfc;
+  border-radius: 100px;
 }

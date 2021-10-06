@@ -8,7 +8,7 @@ import alternativo from '../assets/img/alternativo.svg';
 import repetitivo from '../assets/img/repetitivo.svg';
 import otros from '../assets/img/otros.svg';
 
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 const Links = () => {
     return (
@@ -19,30 +19,34 @@ const Links = () => {
                     <h2>Inicio</h2>
                 </div>
             </NavLink>
-            <Link to={'/liniales'} className={`${styles.customBtn} ${styles.boton}`}>
+            <NavLink to={'/liniales'} className={`${styles.customBtn} ${styles.boton}`}
+                activeClassName={`${styles.activo}`}>
                 <div className={styles.link}>
                     <img src={lineal} alt="" />
                     <h2>Lineales</h2>
                 </div>
-            </Link>
-            <Link to={'/alternativos'} className={`${styles.customBtn} ${styles.boton}`}>
+            </NavLink>
+            <NavLink to={'/alternativos'} className={`${styles.customBtn} ${styles.boton}`}
+                activeClassName={`${styles.activo}`} >
                 <div className={styles.link}>
                     <img src={alternativo} alt="" />
                     <h2>Alternativos</h2>
                 </div>
-            </Link>
-            <Link to={'/repeticion'} className={`${styles.customBtn} ${styles.boton}`}>
+            </NavLink>
+            <NavLink to={'/repeticion'} className={`${styles.customBtn} ${styles.boton}`}
+                activeClassName={`${styles.activo}`}>
                 <div className={styles.link}>
                     <img src={repetitivo} alt="" />
                     <h2>Repetición</h2>
                 </div>
-            </Link>
-            <Link to={'/otros'} className={`${styles.customBtn} ${styles.boton}`}>
+            </NavLink>
+            <NavLink to={'/otros'} className={`${styles.customBtn} ${styles.boton}`}
+                activeClassName={`${styles.activo}`} >
                 <div className={styles.link}>
                     <img src={otros} alt="" />
                     <h2>Otros</h2>
                 </div>
-            </Link>
+            </NavLink>
         </div>
     );
 }
