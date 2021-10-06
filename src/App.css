@@ -1,38 +1,136 @@
-.App {
-  text-align: center;
+:root {
+  /* COLORS */
+  --white: #e9e9e9;
+  --gray: #333;
+  --blue: #0367a6;
+  --lightblue: #008997;
+
+  /* RADII */
+  --button-radius: 0.7rem;
+
+  font-family: "Bebas Neue", cursive;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body {
+  position: relative;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+body .img-llama {
+  position: absolute;
+  bottom: 50px;
+  right: 50px;
+  height: 200px;
+}
+
+h1 {
+  color: #426696;
+  font-weight: 600;
+  font-size: 3rem;
+  opacity: 0.8;
+}
+h2,
+p {
+  color: #658ec6;
+  font-weight: 500;
+  opacity: 0.8;
+}
+
+h3 {
+  color: #426696;
+  font-weight: 600;
+  opacity: 0.8;
+}
+
+main {
+  height: 100vh;
+  background: linear-gradient(to right top, #65dfc9, #6cdbeb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.glass {
+  height: 90vh;
+  width: 70%;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
+  z-index: 2;
+  backdrop-filter: blur(2rem);
+  display: flex;
+}
+.circle1,
+.circle2 {
+  background: white;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.8),
+    rgba(255, 255, 255, 0.3)
+  );
+  height: 20rem;
+  width: 20rem;
+  position: absolute;
+  border-radius: 50%;
+}
+
+.circle1 {
+  top: 2%;
+  right: 8%;
+}
+.circle2 {
+  bottom: 2%;
+  left: 8%;
+}
+
+.dashboard {
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-evenly;
+  text-align: center;
+  background: linear-gradient(
+    to right bottom,
+    rgba(255, 255, 255, 0.7),
+    rgba(255, 255, 255, 0.3)
+  );
+  border-radius: 2rem;
 }
 
-.App-link {
-  color: #61dafb;
+.link {
+  display: flex;
+  padding: 8px 0px;
+  align-items: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.link img {
+  height: 50px;
+  width: 74px;
+  padding-left: 10px;
+}
+
+.link h2 {
+  padding: 0 20px;
+}
+
+/* ejercicios */
+.status {
+  margin: 2rem 0;
+}
+
+.ejer {
+  margin: 0 4rem;
+  display: flex;
+  flex: 2;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
