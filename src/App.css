@@ -140,6 +140,7 @@ main {
 .cards {
   overflow-y: scroll;
   margin: 2rem;
+  padding-right: 15px;
 }
 
 /* Estilos para motores Webkit y blink (Chrome, Safari, Opera... )*/
