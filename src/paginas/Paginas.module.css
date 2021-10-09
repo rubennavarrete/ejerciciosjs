@@ -34,7 +34,6 @@
 }
 
 .card_info {
-  padding: 0 25px;
   width: 100%;
 }
 
@@ -53,6 +52,9 @@
   border: none;
   outline: none;
   transition: 0.4s;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 20px;
 }
 
 /* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
@@ -68,8 +70,7 @@
 /* Style button */
 
 .accordion img {
-  height: 100px;
-  width: 115px;
+  height: 125px;
   border-radius: 25px;
 }
 
@@ -95,12 +96,13 @@
   );
   border-radius: var(--button-radius);
   box-shadow: 0 0.5rem 1.1rem rgb(0 0 0 / 25%), 0 0.1rem 0.1rem rgb(0 0 0 / 0%);
-  height: 60vh;
   overflow: hidden;
   position: relative;
-  width: 100%;
   margin: 0.5rem 0;
-  height: 100%;
+}
+
+.container__form {
+  height: 40vh;
 }
 
 .container__form p input {
@@ -139,22 +141,39 @@
 }
 
 .form {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1rem 3rem;
+  padding: 2rem 3rem;
   text-align: center;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
 }
 
 .from_left {
-  flex: 1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .from_right {
-  flex: 1;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.content_resultado {
+  width: 60%;
+}
+
+.resultado {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  background: #fff;
+  margin-bottom: 1rem;
+  padding: 1rem;
 }
 
 .form p {

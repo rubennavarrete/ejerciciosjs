@@ -1,0 +1,10 @@
+.alerta {
+  background-color: rgb(245 33 33);
+  text-align: center;
+  padding: 10px;
+  border-radius: 20px;
+}
+
+.alerta p {
+  color: #fff;
+}
