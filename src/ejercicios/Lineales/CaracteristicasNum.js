@@ -72,6 +72,7 @@ const CaracteristicasNum = () => {
       if (parseInt(n) < 0) {
         guardarErrorRaiz(true);
       } else {
+        guardarErrorRaiz(false);
         guardarRaiz(Math.sqrt(n).toFixed(0));
       }
     }
