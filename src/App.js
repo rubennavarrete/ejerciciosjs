@@ -1,21 +1,21 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import React from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 // Componentes
-import User from './components/User';
-import Links from './components/Links';
-import Materia from './components/Materia';
+import User from "./components/User";
+import Links from "./components/Links";
+import Materia from "./components/Materia";
 // Paginas
-import Inicio from './paginas/Inicio';
-import Liniales from './paginas/Lineales';
-import Alternativos from './paginas/Alternativos';
-import Repeticion from './paginas/Repeticion';
-import Otros from './paginas/Otros';
+import Inicio from "./paginas/Inicio";
+import Liniales from "./paginas/Liniales";
+import Alternativos from "./paginas/Alternativos";
+import Repeticion from "./paginas/Repeticion";
+import Otros from "./paginas/Otros";
 
 // Css
-import './App.css';
+import "./App.css";
 
-import llama from './assets/img/llama.svg';
+import llama from "./assets/img/llama.svg";
 
 function App() {
   return (
@@ -36,11 +36,11 @@ function App() {
 
             <div className="cards">
               <Switch>
-                <Route path={'/inicio'} component={Inicio}></Route>
-                <Route path={'/liniales'} component={Liniales}></Route>
-                <Route path={'/alternativos'} component={Alternativos}></Route>
-                <Route path={'/repeticion'} component={Repeticion}></Route>
-                <Route path={'/otros'} component={Otros}></Route>
+                <Route path={"/inicio"} component={Inicio}></Route>
+                <Route path={"/liniales"} component={Liniales}></Route>
+                <Route path={"/alternativos"} component={Alternativos}></Route>
+                <Route path={"/repeticion"} component={Repeticion}></Route>
+                <Route path={"/otros"} component={Otros}></Route>
               </Switch>
             </div>
           </div>

@@ -1,10 +1,12 @@
-import React from 'react';
-
+import React, { Fragment } from "react";
+import NotaEstudiante from "../ejercicios/Alternativos/NotaEstudiante";
 
 const Alternativos = () => {
-    return (
-        <h1>Alternativos</h1>
-    );
-}
+  return (
+    <Fragment>
+      <NotaEstudiante />
+    </Fragment>
+  );
+};
 
 export default Alternativos;
