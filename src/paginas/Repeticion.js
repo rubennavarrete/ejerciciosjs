@@ -1,11 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+
+import Gasolinera from "../ejercicios/Repeticion/Gasolinera";
 
 const Repeticion = () => {
   return (
-    <h1>Repeticion</h1>
-    // <Fragment>
-
-    // </Fragment>
+    <Fragment>
+      <Gasolinera />
+    </Fragment>
   );
 };
 

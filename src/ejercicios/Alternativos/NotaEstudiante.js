@@ -94,6 +94,7 @@ const NotaEstudiante = () => {
     guardarNotaE("");
     guardarCategoriaE("");
     guardarMensaje(false);
+    focusNotaE.current.focus();
   };
 
   return (

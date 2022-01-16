@@ -127,6 +127,7 @@ const AreaTriangulo = () => {
     guardarLongitudA("");
     guardarLongitudB("");
     guardarLongitudC("");
+    focusLongitudA.current.focus();
   };
 
   return (
