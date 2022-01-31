@@ -13,6 +13,7 @@ const NumCincoCifras = () => {
   const [error, guardarError] = useState(false);
   const [noValido, guardarNoValido] = useState(false);
   const [noEntero, guardarNoEntero] = useState(false);
+  const [mensaje, guardarMensaje] = useState(false);
 
   const contenedor = useRef(null);
 
@@ -268,11 +269,33 @@ const NumCincoCifras = () => {
       cifraE === ""
     ) {
       focusInput.current.focus();
-      guardarError(false);
-    }
 
-    // calcular las caracteristicas del numero
-    siguiebteN();
+      guardarError(true);
+      return;
+    } else {
+      if (
+        validarCifras(cifraA) === true ||
+        validarCifras(cifraB) === true ||
+        validarCifras(cifraC) === true ||
+        validarCifras(cifraD) === true ||
+        validarCifras(cifraE)
+      ) {
+        guardarMensaje(true);
+        guardarNoEntero(false);
+        guardarNoValido(false);
+        guardarError(false);
+
+        guardarSextoNumC("");
+        return;
+      } else {
+        guardarNoEntero(false);
+        guardarNoValido(false);
+        guardarError(false);
+        guardarMensaje(false);
+        // calcular las caracteristicas del numero
+        siguiebteN();
+      }
+    }
   };
 
   const siguiebteN = () => {
@@ -293,6 +316,7 @@ const NumCincoCifras = () => {
     guardarNoEntero(false);
     guardarNoValido(false);
     guardarError(false);
+    guardarMensaje(false);
     //Reiniciar el form
     guardarCifraA("");
     guardarCifraB("");
@@ -417,6 +441,10 @@ const NumCincoCifras = () => {
 
                   {error ? (
                     <Error mensaje="Todos los campos deben estar llenos!" />
+                  ) : null}
+
+                  {mensaje ? (
+                    <Error mensaje="Todos los campos deben ser de 5 cifras!" />
                   ) : null}
                 </div>
               </div>

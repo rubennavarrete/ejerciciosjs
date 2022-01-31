@@ -13,9 +13,11 @@ const Gasolinera = () => {
   const [error, guardarError] = useState(false);
   const [menorCero, guardarMenorCero] = useState(false);
   const [mensaje, guardarMensaje] = useState(false);
+  const [mensajeT, guardarMensajeT] = useState(false);
 
   const contenedor = useRef(null);
   const focusNl = useRef(null);
+  const focusRl = useRef(null);
 
   // efecto desplegable
   const accordion = () => {
@@ -27,15 +29,16 @@ const Gasolinera = () => {
 
   //capturar valores de los imput
   const [nLitros, guardarNlitros] = useState("");
+  const [turno, guardarTurno] = useState(false);
 
   // Resultado
-  const [litrosRes, guardarLitrosRes] = useState(150);
+  const [litrosRes, guardarLitrosRes] = useState(0);
   const [vehiculo, guardarVehiculo] = useState(0);
   const [dinero, guardarDinero] = useState(0);
   const [mayorConsumo, guardarMayorConsumo] = useState(0);
 
   // Cuando el usuario da click en calcular
-  const areaTriangulo = (e) => {
+  const Venta = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
@@ -64,10 +67,6 @@ const Gasolinera = () => {
 
       if (parseInt(nLitros) > parseInt(mayorConsumo)) {
         guardarMayorConsumo(nLitros);
-      } else {
-        console.log("no se que putas pasa");
-        console.log("en n-litros hay: ", nLitros);
-        console.log("y en mayor consumo hay: ", mayorConsumo);
       }
     }
   };
@@ -75,8 +74,24 @@ const Gasolinera = () => {
   const validarInputN = () => {
     if (nLitros === "") {
       guardarError(true);
+      guardarMenorCero(false);
       focusNl.current.focus();
       return;
+    }
+  };
+
+  const validarInputR = () => {
+    if (litrosRes === "") {
+      guardarError(true);
+      focusRl.current.focus();
+      return;
+    } else if (litrosRes < 1) {
+      guardarMensajeT(true);
+      guardarError(false);
+      focusRl.current.focus();
+      return;
+    } else {
+      guardarTurno(true);
     }
   };
 
@@ -88,6 +103,16 @@ const Gasolinera = () => {
     guardarNlitros("");
     guardarMensaje(false);
     focusNl.current.focus();
+  };
+
+  const nuevoTurno = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    guardarMenorCero(false);
+    guardarError(false);
+    guardarNlitros("");
+    guardarMensaje(false);
+    validarInputR();
   };
 
   return (
@@ -129,17 +154,49 @@ const Gasolinera = () => {
               id="form"
             >
               <div className={styles.from_left}>
-                <h2 className={styles.form__title}>Ingreso de datos</h2>
-                <input
-                  type="number"
-                  placeholder="Listros a despachar..."
-                  ref={focusNl}
-                  value={nLitros}
-                  className={styles.input}
-                  onChange={(e) => guardarNlitros(e.target.value)}
-                  onInput={(e) => guardarNlitros(e.target.value)}
-                  onBlur={validarInputN}
-                />
+                <button className={styles.btn} onClick={(e) => nuevoTurno(e)}>
+                  Nuevo Turno
+                </button>
+                {turno ? (
+                  <div>
+                    <h2 className={styles.form__title}>Ingreso de datos</h2>
+                    <input
+                      type="number"
+                      placeholder="Listros a despachar..."
+                      ref={focusNl}
+                      value={nLitros}
+                      className={styles.input}
+                      onChange={(e) => guardarNlitros(e.target.value)}
+                      onInput={(e) => guardarNlitros(e.target.value)}
+                      onBlur={validarInputN}
+                    />
+                  </div>
+                ) : (
+                  <div>
+                    <h2 className={styles.form__title}>
+                      Ingreso los litros de gasolin con los que iniciara el
+                      turno
+                    </h2>
+                    <input
+                      type="number"
+                      placeholder="Ingrese los litros..."
+                      ref={focusRl}
+                      value={litrosRes}
+                      className={styles.input}
+                      onChange={(e) => guardarLitrosRes(e.target.value)}
+                      onInput={(e) => guardarLitrosRes(e.target.value)}
+                      onBlur={validarInputR}
+                    />
+                    {error ? (
+                      <Error mensaje="Todos los campos deben estar llenos!" />
+                    ) : null}
+
+                    {mensajeT ? (
+                      <Error mensaje="La cantidad minima para comensar el turno es de 100 litros" />
+                    ) : null}
+                  </div>
+                )}
+
                 <br />
 
                 {mensaje ? (
@@ -152,9 +209,7 @@ const Gasolinera = () => {
                   />
                 ) : null}
 
-                {error ? (
-                  <Error mensaje="Todos los campos deben estar llenos!" />
-                ) : null}
+                {error ? <Error mensaje="El campo debe estar lleno!" /> : null}
 
                 {menorCero ? (
                   <Error mensaje="Solo se permiten compras mayores a 1 Litro" />
@@ -184,13 +239,24 @@ const Gasolinera = () => {
                   </div>
                 </div>
               </div>
-              <button className={styles.btn} onClick={(e) => areaTriangulo(e)}>
-                Calcular
-              </button>
 
-              <button className={styles.btn} onClick={(e) => limpiarForm(e)}>
-                Limpiar
-              </button>
+              {turno ? (
+                <Fragment>
+                  <button className={styles.btn} onClick={(e) => Venta(e)}>
+                    Vender
+                  </button>
+                  <button
+                    className={styles.btn}
+                    onClick={(e) => limpiarForm(e)}
+                  >
+                    Limpiar
+                  </button>
+                </Fragment>
+              ) : (
+                <button className={styles.btn} onClick={(e) => Venta(e)}>
+                  Ingresar
+                </button>
+              )}
             </form>
           </div>
         </div>
