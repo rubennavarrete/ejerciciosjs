@@ -1,6 +1,7 @@
 import React, { Fragment, useState, useRef } from "react";
 
 import voz from "../../assets/img/voz.jpg";
+import goog from "../../assets/img/google.gif";
 
 //css
 import styles from "../../paginas/Paginas.module.css";
@@ -8,7 +9,7 @@ import styles from "../../paginas/Paginas.module.css";
 const Voz = () => {
   const [setActivo, guardarActivo] = useState("");
   const [setAlto, guardarAlto] = useState("0px");
-  const [mensaje, guardarMensaje] = useState("");
+  // const [mensaje, guardarMensaje] = useState("");
 
   const contenedor = useRef(null);
 
@@ -112,10 +113,10 @@ const Voz = () => {
           style={{ maxHeight: `${setAlto}` }}
         >
           <div className={styles.container__form}>
-            <div>
+            {/* <div>
               <h2>{mensaje.emoji}</h2>
               <h2>{mensaje.wordSpoken}</h2>
-            </div>
+            </div> */}
             {/* <button className={styles.btn} onClick={renderSpeech}>
               Precione y Hable
             </button> */}
@@ -124,10 +125,7 @@ const Voz = () => {
               Limpiar
             </button> */}
             <div className={styles.buscar}>
-              <img
-                src="https://i.gifer.com/G3sN.gif"
-                style={{ maxWidth: 400, marginTop: 16 }}
-              />
+              <img src={goog} style={{ maxWidth: 400, marginTop: 16 }} alt="" />
               <form
                 target="_blank"
                 id="labnol"
@@ -144,6 +142,7 @@ const Voz = () => {
                   <img
                     onClick={renderSpeech}
                     src="https://monophy.com/media/WQZOJnVgueGfOKO6JL/monophy.gif"
+                    alt=""
                   />
                 </div>
               </form>
