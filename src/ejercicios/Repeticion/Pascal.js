@@ -19,10 +19,10 @@ const Pascal = () => {
     );
   };
 
-  const bloquear = document.getElementById("genera");
+  // const bloquear = document.getElementById("genera");
   // Resultado
   let [numero, guardarNumero] = useState("");
-  let [pascal, guardarPascal] = useState("");
+  // let [pascal, guardarPascal] = useState("");
   let [aux, guardarAux] = useState("");
 
   // Cuando el usuario da click en calcular
@@ -120,7 +120,7 @@ const Pascal = () => {
                 <textarea
                   type="text"
                   name="numeros"
-                  onChange={(e) => guardarPascal(e.target.value)}
+                  // onChange={(e) => guardarPascal(e.target.value)}
                   rows="20"
                   cols="85"
                   id="numeros"

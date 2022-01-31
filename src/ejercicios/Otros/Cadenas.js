@@ -113,15 +113,15 @@ const Cadena = () => {
             cada una de las letras que aparecen en ella, con la cantidad de
             veces que aparecen escrito a su dereha. Ejemplo: “ESE ES EL ERROR ”
             <br />
-            E -> 5
+            E -- 5
             <br />
-            S -> 2
+            S -- 2
             <br />
-            L -> 1
+            L -- 1
             <br />
-            R -> 3
+            R -- 3
             <br />
-            O -> 1
+            O -- 1
             <br />
           </p>
         </div>
