@@ -20,45 +20,8 @@ const Cadena = () => {
     );
   };
 
-  var abecedario = [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H",
-    "I",
-    "J",
-    "K",
-    "L",
-    "M",
-    "N",
-    "Ñ",
-    "O",
-    "P",
-    "R",
-    "S",
-    "T",
-    "U",
-    "V",
-    "W",
-    "X",
-    "Y",
-    "Z",
-  ];
-
   const [oracion, guardarOracion] = useState("");
-  let [contar, guardarContar] = useState("");
-  let [indice, guardarIndice] = useState(0);
+  const [contar, guardarContar] = useState("");
 
   const comprobar = (e) => {
     e.preventDefault();
@@ -72,30 +35,30 @@ const Cadena = () => {
 
     guardarOracion("");
     guardarContar("");
-    guardarIndice(0);
   };
 
+  var contarLetras = {};
+
   const contarO = () => {
-    for (var i = 0; i < abecedario.length; i++) {
-      for (var j = 0; j < oracion.length; j++) {
-        console.log(`${abecedario[i]} === ${oracion[j].toUpperCase()}`);
-        if (abecedario[i] === oracion[j].toUpperCase()) {
-          indice++;
+    const nuevaOracion = oracion.replace(/ /g, "");
 
-          console.log("indice: ", indice);
-          console.log(`${abecedario[i]} === ${oracion[j].toUpperCase()}`);
-        }
+    //For que va generando la cantidad de veces que la letra se repite
+    for (let i = 0; i < nuevaOracion.length; i++) {
+      let letra = nuevaOracion[i];
+      if (contarLetras[letra] === undefined) {
+        contarLetras[letra] = 1;
+      } else {
+        contarLetras[letra]++;
       }
-
-      contar += `${oracion[i]} -> ${indice}`;
-      guardarContar(contar);
-      contar += "                               ";
-      guardarContar(contar);
-      indice = 0;
-      guardarIndice(indice);
-      abecedario.slice(i);
-      oracion.slice(i);
     }
+
+    // console.log(contarLetras);
+
+    // const imprimir = contarLetras.map((contarLetra) => contarLetra);
+
+    // console.log(imprimir);
+
+    guardarContar(JSON.stringify(contarLetras));
   };
 
   return (
