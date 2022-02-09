@@ -17,6 +17,7 @@ const NotaEstudiante = () => {
   const [setAlto, guardarAlto] = useState("0px");
   const [error, guardarError] = useState(false);
   const [menorCero, guardarMenorCero] = useState(false);
+  const [mayorCien, guardarMayorCien] = useState(false);
   const [mensaje, guardarMensaje] = useState(false);
 
   const contenedor = useRef(null);
@@ -75,6 +76,7 @@ const NotaEstudiante = () => {
         guardarCategoriaE("insuficiente");
         break;
       default:
+        guardarMayorCien(true);
     }
   };
 
@@ -208,7 +210,11 @@ const NotaEstudiante = () => {
                     ) : null}
 
                     {menorCero ? (
-                      <Error mensaje="No se permiten valores menores que 1" />
+                      <Error mensaje="No se permiten valores menores que 0" />
+                    ) : null}
+
+                    {mayorCien ? (
+                      <Error mensaje="Ingrese una nota valida" />
                     ) : null}
                   </div>
                 </div>

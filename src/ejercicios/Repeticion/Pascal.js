@@ -21,35 +21,45 @@ const Pascal = () => {
 
   // const bloquear = document.getElementById("genera");
   // Resultado
-  let [numero, guardarNumero] = useState("");
-  // let [pascal, guardarPascal] = useState("");
-  let [aux, guardarAux] = useState("");
+  const [numero, guardarNumero] = useState("");
+
+  const [propiedad, guardarPropiedad] = useState("");
 
   // Cuando el usuario da click en calcular
-  const generar = (e) => {
+  const generarP = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    guardarAux(setInterval(makeTableHTML(numero), 500));
+    trianguloPascal(numero);
   };
 
-  //creamos la matriz bidimensional A(n,n)
-  let A = new Array(numero);
-  for (let i = 1; i <= numero; i++) {
-    A[i] = new Array(numero);
-  }
-  //alimentamos la matriz
-  for (let i = 1; i <= numero; i++) {
-    for (let j = 1; j <= i; j++) {
-      A[i][j] = combina(i - 1, j - 1);
+  function trianguloPascal(n) {
+    guardarPropiedad("");
+    var Vec = new Array(n);
+    for (let i = 1; i <= n; i++) {
+      Vec[i] = new Array(n);
     }
+    for (let i = 1; i <= n; i++) {
+      for (let j = 1; j <= i; j++) {
+        Vec[i][j] = generar(i - 1, j - 1);
+      }
+    }
+    var texto = "";
+    for (let i = 1; i <= n; i++) {
+      for (let j = 1; j <= i; j++) {
+        texto += Vec[i][j];
+        texto += " ";
+      }
+      texto += "\n";
+    }
+    guardarPropiedad(texto);
   }
-  //función que calcula el número combinatorio p sobre q
-  function combina(p, q) {
-    return Math.round(fact(p) / (fact(q) * fact(p - q)));
+
+  function generar(a, b) {
+    return Math.round(fact(a) / (fact(b) * fact(a - b)));
   }
-  //función que calcula el factorial
+
   function fact(h) {
-    let f = 1;
+    var f = 1;
     if (h !== 0) {
       for (let k = 1; k <= h; k++) {
         f *= k;
@@ -58,29 +68,12 @@ const Pascal = () => {
     return f;
   }
 
-  //creamos la tabla en HTML con etiquetas de tabla
-  function makeTableHTML(myArray) {
-    var result = "<table border=1>";
-    for (var i = 1; i <= numero; i++) {
-      result += "<tr>";
-      for (var j = 1; j <= i; j++) {
-        result += "<td width='90' align='center'>" + A[i][j] + "</td>";
-      }
-      result += "</tr>";
-    }
-    result += "</table>";
-    return result;
-  }
-
   const limpiarForm = (e) => {
     e.preventDefault();
     e.stopPropagation();
+    guardarNumero("");
+    guardarPropiedad("");
     focusA.current.focus();
-    parar();
-  };
-
-  const parar = () => {
-    clearInterval(aux);
   };
 
   return (
@@ -112,6 +105,7 @@ const Pascal = () => {
                 <input
                   type="number"
                   placeholder="Ingrese el numero de filas a generar *"
+                  value={numero}
                   ref={focusA}
                   className={styles.input}
                   onChange={(e) => guardarNumero(e.target.value)}
@@ -120,7 +114,8 @@ const Pascal = () => {
                 <textarea
                   type="text"
                   name="numeros"
-                  // onChange={(e) => guardarPascal(e.target.value)}
+                  className={styles.centrar_pascal}
+                  value={propiedad}
                   rows="20"
                   cols="85"
                   id="numeros"
@@ -129,13 +124,13 @@ const Pascal = () => {
               <button
                 id="genera"
                 className={styles.btn}
-                onClick={(e) => generar(e)}
+                onClick={(e) => generarP(e)}
               >
                 Calcular
               </button>
 
               <button className={styles.btn} onClick={(e) => limpiarForm(e)}>
-                Parar
+                Limpiar
               </button>
             </form>
           </div>

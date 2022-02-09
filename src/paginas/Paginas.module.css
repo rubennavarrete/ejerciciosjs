@@ -327,3 +327,7 @@ td {
   grid-column: 1 / 3;
   grid-row: 2;
 }
+
+.centrar_pascal {
+  text-align: center;
+}

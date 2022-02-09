@@ -12,6 +12,7 @@ const SumaBinarios = () => {
   const [setAlto, guardarAlto] = useState("0px");
   const [mensaje, guardarMensaje] = useState(false);
   const [errorVacio, guardarErrorVacio] = useState(false);
+  const [errorBinario, guardarErrorBinario] = useState(false);
 
   const contenedor = useRef(null);
   const focusSa = useRef(null);
@@ -37,13 +38,24 @@ const SumaBinarios = () => {
     e.preventDefault();
     e.stopPropagation();
 
+    // validacion
+    let patron = /[01]+/;
+    let verificarBinario = new RegExp(patron);
+    console.log(verificarBinario.test(a));
+    console.log(verificarBinario.test(b));
+
     if ((a === 0 || a === "") && (b === 0 || b === "")) {
       guardarMensaje(false);
       guardarErrorVacio(true);
       focusSa.current.focus();
       return;
+    } else if (verificarBinario.test(a) || verificarBinario.test(b)) {
+      guardarMensaje(false);
+      guardarErrorVacio(false);
+      guardarSumaB(suma(a, b));
+    } else {
+      guardarErrorBinario(true);
     }
-    guardarSumaB(suma(a, b));
   };
 
   const suma = (a, b) => {
@@ -156,6 +168,9 @@ const SumaBinarios = () => {
                   {mensaje ? <Error mensaje="No hay solución real!" /> : null}
                   {errorVacio ? (
                     <Error mensaje="Todos los campos deben estar llenos!!" />
+                  ) : null}
+                  {errorBinario ? (
+                    <Error mensaje="Ingrese solo valores binarios!" />
                   ) : null}
                 </div>
               </div>

@@ -69,13 +69,10 @@ const RaicesReales = () => {
 
     guardarDiscriminante(disc);
 
-    if (a === 0 || a === "") {
-      guardarMensajeErrA(true);
-      return;
-    }
-
     if (disc < 0) guardarMensaje(true);
-    else {
+    else if (parseInt(a) === 0 || a === "") {
+      guardarMensajeErrA(true);
+    } else {
       guardarMensaje(false);
       /* AHORA calculamos las raices */
       let x1 = (-b - Math.sqrt(disc)) / (2 * a);

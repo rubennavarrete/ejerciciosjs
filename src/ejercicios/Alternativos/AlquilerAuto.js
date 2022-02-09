@@ -10,7 +10,6 @@ import styles from "../../paginas/Paginas.module.css";
 const AlquilerAuto = () => {
   const [setActivo, guardarActivo] = useState("");
   const [setAlto, guardarAlto] = useState("0px");
-  const [mensaje, guardarMensaje] = useState(false);
 
   const contenedor = useRef(null);
   const focusK = useRef(null);
@@ -29,6 +28,8 @@ const AlquilerAuto = () => {
   // Resultado
   const [monto, guardarMonto] = useState("");
   const [impuesto, guardarImpuesto] = useState("");
+  const [mensaje, guardarMensaje] = useState(false);
+  const [menorCero, guardarMenorCero] = useState(false);
 
   // Cuando el usuario da click en calcular
   const calculoRaices = (e) => {
@@ -37,6 +38,12 @@ const AlquilerAuto = () => {
 
     if (kilometros === "") {
       guardarMensaje(true);
+      focusK.current.focus();
+      return;
+    } else if (kilometros < 0) {
+      guardarMensaje(false);
+      guardarMenorCero(true);
+      guardarKilometros("");
       focusK.current.focus();
       return;
     }
@@ -66,6 +73,7 @@ const AlquilerAuto = () => {
     guardarImpuesto("");
     guardarKilometros("");
     guardarMensaje(false);
+    guardarMenorCero(false);
     focusK.current.focus();
   };
 
@@ -136,6 +144,10 @@ const AlquilerAuto = () => {
                   </div>
                   {mensaje ? (
                     <Error mensaje="El campo es obligatorio!" />
+                  ) : null}
+
+                  {menorCero ? (
+                    <Error mensaje="No existe kilometros negativos!" />
                   ) : null}
                 </div>
               </div>

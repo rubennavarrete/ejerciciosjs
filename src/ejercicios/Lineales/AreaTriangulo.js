@@ -121,7 +121,6 @@ const AreaTriangulo = () => {
     e.stopPropagation();
     guardarMenorCero(false);
     guardarError(false);
-    document.getElementById("form").reset();
     guardarValorArea("");
     guardarMensaje(false);
     guardarLongitudA("");
